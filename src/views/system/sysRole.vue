@@ -161,7 +161,7 @@ const doAssign = async () => {
     if(code === 200 ) {
       ElMessage.success('操作成功')
       dialogMenuVisible.value = false
-
+      window.location.reload()
     } else {
       ElMessage.error(message)
     }

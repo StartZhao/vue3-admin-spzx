@@ -69,7 +69,7 @@
       <el-form-item label="描述">
         <el-input v-model="sysUser.description" />
       </el-form-item>
-      <el-form-item label="状态">
+      <el-form-item label="状态" v-show="radioVisible">
         <el-radio-group v-model="sysUser.status">
           <el-radio :label="1">正常</el-radio>
           <el-radio :label="0">停用</el-radio>
@@ -178,6 +178,7 @@ const doAssign = async () => {
     dialogRoleVisible.value = false
     sysUser.value = { ...defaultForm }
     userRoleIds.value = []
+    window.location.reload()
   } else {
     ElMessage.error(message)
   }
@@ -217,13 +218,17 @@ const deleteById = row => {
 const editShow = row => {
   sysUser.value = { ...row }
   dialogVisible.value = true
+  radioVisible.value = true
 }
 
 /* 添加用户 */
 
 const dialogVisible = ref(false)
+const radioVisible = ref(false)
 const addShow = () => {
+  sysUser.value = {...defaultForm}
   dialogVisible.value = true
+  radioVisible.value = false
 }
 
 // 定义提交表单数据模型
