@@ -69,6 +69,12 @@
       <el-form-item label="描述">
         <el-input v-model="sysUser.description" />
       </el-form-item>
+      <el-form-item label="状态">
+        <el-radio-group v-model="sysUser.status">
+          <el-radio :label="1">正常</el-radio>
+          <el-radio :label="0">停用</el-radio>
+        </el-radio-group>
+      </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submit">提交</el-button>
         <el-button @click="dialogVisible = false">取消</el-button>
